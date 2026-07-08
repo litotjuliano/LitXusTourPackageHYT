@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title><%= typeof title !== 'undefined' ? title + ' — HYT Admin' : 'HYT Admin' %></title>
+  <link rel="stylesheet" href="/css/admin.css">
+</head>
+<body>
+<% if (typeof currentAdmin !== 'undefined' && currentAdmin) { %>
+  <nav class="navbar">
+    <div>
+      <span class="brand">HYT Admin</span>
+      <a href="/admin/dashboard">Dashboard</a>
+      <a href="/admin/tours">Tours</a>
+      <% if (false) { // Leads nav link temporarily hidden %>
+        <a href="/admin/leads">Leads</a>
+      <% } %>
+    </div>
+    <div>
+      <span style="margin-right:1rem;font-size:0.85rem;"><%= currentAdmin.name %></span>
+      <a href="/admin/logout">Log out</a>
+    </div>
+  </nav>
+<% } %>
+<div class="container">
+<%- include('flash-messages') %>

@@ -1,0 +1,65 @@
+<%- include('../partials/header', { title: tour ? 'Edit Tour' : 'New Tour', currentAdmin }) %>
+
+<%
+  function fieldError(field) {
+    var match = (errors || []).find(function (e) { return e.field === field; });
+    return match ? match.message : null;
+  }
+  function val(field, fallback) {
+    if (formValues && formValues[field] !== undefined) return formValues[field];
+    if (fallback !== undefined) return fallback;
+    return '';
+  }
+%>
+
+<h1><%= tour ? 'Edit Tour' : 'New Tour' %></h1>
+
+<div class="card">
+  <form method="POST" action="<%= tour ? '/admin/tours/' + tour.id + '/update' : '/admin/tours' %>" enctype="multipart/form-data">
+    <div class="form-group">
+      <label for="title">Tour Package Title (single field, mixed language as shown on the site — e.g. "8天7晚 山东青岛 Shandong Qingdao (君顶酒庄之美酒之旅)")</label>
+      <input type="text" id="title" name="title" value="<%= val('title', tour ? tour.title : '') %>" required>
+      <% if (fieldError('title')) { %><div class="field-error"><%= fieldError('title') %></div><% } %>
+    </div>
+
+    <div class="form-group">
+      <label for="pdfFlyer">Upload PDF (Itinerary Flyer)</label>
+      <input type="file" id="pdfFlyer" name="pdfFlyer" accept="application/pdf">
+      <% if (tour && tour.pdf_url) { %>
+        <div style="margin-top:0.5rem;"><a href="<%= tour.pdf_url %>" target="_blank">Current PDF flyer</a></div>
+      <% } %>
+    </div>
+
+    <div class="form-group">
+      <label for="departure_dates">Date (free text, mixed language — e.g. "2026年9月2, 23日｜12月2日 (02, 23 SEP｜02 DEC 2026)")</label>
+      <input type="text" id="departure_dates" name="departure_dates" value="<%= val('departure_dates', tour ? tour.departure_dates : '') %>">
+    </div>
+
+    <div class="form-group">
+      <label for="price">Price (RM)</label>
+      <input type="number" step="0.01" id="price" name="price" value="<%= val('price', tour ? tour.price : '') %>" required>
+      <% if (fieldError('price')) { %><div class="field-error"><%= fieldError('price') %></div><% } %>
+    </div>
+
+    <div class="form-group">
+      <label for="whatsapp_1">WhatsApp 1 (with country code, e.g. 60165563838)</label>
+      <input type="text" id="whatsapp_1" name="whatsapp_1" value="<%= val('whatsapp_1', tour ? tour.whatsapp_1 : '') %>">
+    </div>
+    <div class="form-group">
+      <label for="whatsapp_2">WhatsApp 2 (optional)</label>
+      <input type="text" id="whatsapp_2" name="whatsapp_2" value="<%= val('whatsapp_2', tour ? tour.whatsapp_2 : '') %>">
+    </div>
+
+    <div class="form-group">
+      <label for="coverImage">Image (Cover Photo)</label>
+      <input type="file" id="coverImage" name="coverImage" accept="image/*">
+      <% if (tour && tour.cover_image_url) { %>
+        <div style="margin-top:0.5rem;"><a href="<%= tour.cover_image_url %>" target="_blank">Current cover image</a></div>
+      <% } %>
+    </div>
+
+    <button type="submit" class="btn btn-primary"><%= tour ? 'Save Changes' : 'Create Tour' %></button>
+  </form>
+</div>
+
+<%- include('../partials/footer') %>

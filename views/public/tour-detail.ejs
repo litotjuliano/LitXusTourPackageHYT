@@ -1,0 +1,62 @@
+<%- include('../partials/public-header', { title: tour.title, flash: typeof flash !== 'undefined' ? flash : null }) %>
+
+<% var subtitleMatch = tour.title ? tour.title.match(/^(.*?)(\(.*\))\s*$/) : null; %>
+
+<% if (tour.cover_image_url) { %>
+  <img class="detail-hero-img" src="<%= tour.cover_image_url %>" alt="<%= tour.title %>">
+<% } %>
+
+<div class="detail-section">
+  <div class="tour-title" style="color:#fff;">
+    <span style="color:#f2c94c;">
+      <% if (subtitleMatch) { %>
+        <%= subtitleMatch[1] %><span style="color:#ff6b6b;"><%= subtitleMatch[2] %></span>
+      <% } else { %>
+        <%= tour.title %>
+      <% } %>
+    </span>
+  </div>
+
+  <% if (tour.pdf_url) { %>
+    <p><a class="tour-detail-link" href="<%= tour.pdf_url %>" target="_blank">Download Full Itinerary PDF / 下载完整行程PDF</a></p>
+  <% } %>
+
+  <% if (tour.departure_dates) { %>
+    <p><strong>日期 Date：</strong> <%= tour.departure_dates %></p>
+  <% } %>
+  <p><strong>团费 Price：</strong> from RM <%= tour.price %></p>
+
+  <% if (tour.whatsapp_links && tour.whatsapp_links.length) { %>
+    <p><strong>WhatsApp 联系：</strong></p>
+    <% tour.whatsapp_links.forEach(function(w) { %>
+      <div class="whatsapp-line">
+        <span class="whatsapp-number"><%= w.number %></span>
+        <a class="whatsapp-link" href="<%= w.link %>" target="_blank"><span class="whatsapp-icon">&#9655;</span><%= w.displayUrl %></a>
+      </div>
+    <% }); %>
+  <% } %>
+</div>
+
+<div class="detail-section">
+  <h2>Enquire About This Tour / 咨询此行程</h2>
+  <form class="inquiry-form" method="POST" action="/tours/<%= tour.id %>/inquiry">
+    <label for="customer_name">Name / 姓名</label>
+    <input type="text" id="customer_name" name="customer_name" required>
+
+    <label for="whatsapp_number">WhatsApp Number / WhatsApp 号码</label>
+    <input type="text" id="whatsapp_number" name="whatsapp_number" required>
+
+    <label for="email">Email (optional)</label>
+    <input type="email" id="email" name="email">
+
+    <label for="preferred_travel_date">Preferred Travel Date / 出行日期</label>
+    <input type="date" id="preferred_travel_date" name="preferred_travel_date">
+
+    <label for="pax_count">Number of Travelers / 人数</label>
+    <input type="number" id="pax_count" name="pax_count" min="1">
+
+    <button type="submit">Submit Enquiry / 提交咨询</button>
+  </form>
+</div>
+
+<%- include('../partials/public-footer') %>

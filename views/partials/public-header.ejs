@@ -1,0 +1,13 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title><%= typeof title !== 'undefined' ? title + ' — HYT Tour Itineraries' : 'HYT Tour Itineraries 华益旅运社' %></title>
+  <link rel="stylesheet" href="/css/site.css">
+</head>
+<body class="site">
+  <div class="site-container">
+    <% if (typeof flash !== 'undefined' && flash) { %>
+      <div class="site-flash <%= flash.type %>"><%= flash.message %></div>
+    <% } %>

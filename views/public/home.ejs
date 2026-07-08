@@ -1,0 +1,24 @@
+<%- include('../partials/public-header', { title: 'Home', flash: typeof flash !== 'undefined' ? flash : null }) %>
+
+<div class="hero">
+  <div class="hero-inner">
+    <img class="hero-logo-img" src="/img/HYT-logo.png" alt="HYT Travel Services Sdn Bhd 华益旅运社有限公司">
+    <h1 class="hero-title">轻松预约您的专属旅程，开启美好旅途</h1>
+    <p class="hero-subtitle">一站式预订平台，满足您的所有旅游需求</p>
+  </div>
+</div>
+
+<div class="intro-block">
+  <h2 class="intro-title">我们的行程 <span class="intro-year">2026</span></h2>
+  <p class="intro-tagline">✈️ 世界那么大，不如我们一起去看看 😆<br>旅程即将开启，期待与你同行 ❤️</p>
+</div>
+
+<% if (!tours.length) { %>
+  <p class="empty-note">No tours available yet.</p>
+<% } else { %>
+  <% tours.forEach(function(tour) { %>
+    <%- include('../partials/tour-card', { tour }) %>
+  <% }); %>
+<% } %>
+
+<%- include('../partials/public-footer') %>

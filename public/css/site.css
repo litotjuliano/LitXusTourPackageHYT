@@ -1,0 +1,221 @@
+* { box-sizing: border-box; }
+body.site {
+  margin: 0;
+  background: #262626;
+  color: #e5e5e5;
+  font-family: -apple-system, "Segoe UI", Roboto, "PingFang SC", "Microsoft YaHei", Arial, sans-serif;
+}
+.site-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem 1.25rem;
+}
+.region-heading {
+  color: #fff;
+  font-size: 1.4rem;
+  margin: 2.5rem 0 1rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 2px solid #444;
+}
+.region-heading .region-cn { color: #f2c94c; margin-left: 0.5rem; font-size: 1.1rem; }
+
+/* Homepage hero */
+.hero {
+  position: relative;
+  margin: -2rem -1.25rem 0;
+  padding: clamp(2.5rem, 6vw, 4.5rem) 1.5rem;
+  text-align: center;
+  color: #fff;
+  overflow: hidden;
+  background-image: linear-gradient(180deg, rgba(15, 20, 35, 0.45) 0%, rgba(15, 20, 35, 0.65) 100%),
+    url('/img/hero-bg.jpg');
+  background-size: cover;
+  background-position: center;
+}
+.hero-inner {
+  position: relative;
+  z-index: 1;
+  max-width: 720px;
+  margin: 0 auto;
+}
+.hero-logo-img {
+  width: clamp(140px, 22vw, 200px);
+  height: auto;
+  border-radius: 10px;
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.35);
+  margin-bottom: 1rem;
+}
+.hero-title {
+  font-size: clamp(1.35rem, 4vw, 2.1rem);
+  font-weight: 800;
+  line-height: 1.45;
+  margin: 1.75rem 0 0.75rem;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.35);
+}
+.hero-subtitle {
+  font-size: clamp(0.9rem, 2.2vw, 1.05rem);
+  color: #f5f5f5;
+  margin: 0;
+  text-shadow: 0 1px 6px rgba(0, 0, 0, 0.3);
+}
+
+.intro-block {
+  text-align: center;
+  padding: 2.5rem 1.25rem 0.5rem;
+}
+.intro-title {
+  font-size: clamp(1.2rem, 3vw, 1.6rem);
+  font-weight: 700;
+  color: #fff;
+  margin: 0 0 0.85rem;
+}
+.intro-title .intro-year { color: #f2c94c; font-weight: 400; margin-left: 0.35rem; }
+.intro-tagline {
+  color: #ccc;
+  font-size: 1rem;
+  line-height: 1.8;
+  margin: 0 0 1rem;
+}
+
+.tour-card {
+  display: flex;
+  gap: 1.5rem;
+  background: #e8e8e8;
+  color: #1a1a1a;
+  border-radius: 6px;
+  padding: 1rem;
+  margin-bottom: 1.5rem;
+  flex-wrap: wrap;
+}
+.tour-card-image {
+  flex: 0 0 260px;
+  max-width: 260px;
+  border-radius: 4px;
+  overflow: hidden;
+  background: #ccc;
+  min-height: 160px;
+}
+.tour-card-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+.tour-card-body {
+  flex: 1 1 320px;
+  min-width: 260px;
+}
+.tour-title {
+  font-size: 1.3rem;
+  font-weight: 700;
+  margin-bottom: 0.6rem;
+  line-height: 1.4;
+}
+.tour-title .dur-cn { color: #d0021b; }
+.tour-title .title-main { color: #1c3f95; }
+.tour-title .subtitle-red { color: #d0021b; }
+.tour-field {
+  margin-bottom: 0.35rem;
+  font-size: 0.95rem;
+}
+.tour-field .field-label { font-weight: 700; color: #1a1a1a; }
+.tour-field .detail-label { font-weight: 700; color: #d0021b; }
+.tour-detail-link {
+  color: #1155cc;
+  text-decoration: underline;
+}
+.whatsapp-line { display: flex; align-items: center; gap: 0.4rem; flex-wrap: wrap; margin-bottom: 0.25rem; }
+.whatsapp-number { font-weight: 600; min-width: 6.5rem; }
+.whatsapp-link {
+  color: #1155cc;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+}
+.whatsapp-link:hover { text-decoration: underline; }
+.whatsapp-icon {
+  display: inline-block;
+  background: #25d366;
+  color: #fff;
+  border-radius: 4px;
+  width: 1.1rem;
+  height: 1.1rem;
+  text-align: center;
+  line-height: 1.1rem;
+  font-size: 0.7rem;
+}
+.view-detail-btn {
+  display: inline-block;
+  margin-top: 0.6rem;
+  padding: 0.4rem 0.9rem;
+  background: #1c3f95;
+  color: #fff;
+  border-radius: 4px;
+  text-decoration: none;
+  font-size: 0.85rem;
+}
+.view-detail-btn-disabled {
+  background: #9ca3af;
+  color: #e5e7eb;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+/* Tour detail page */
+.detail-hero-img { width: 100%; max-height: 380px; object-fit: cover; border-radius: 6px; margin-bottom: 1.5rem; }
+.detail-section { background: #333; border-radius: 6px; padding: 1.25rem 1.5rem; margin-bottom: 1.5rem; }
+.detail-section h2 { color: #f2c94c; margin-top: 0; font-size: 1.1rem; }
+.day-block { border-left: 3px solid #f2c94c; padding-left: 1rem; margin-bottom: 1rem; }
+.day-block .day-num { font-weight: 700; color: #fff; }
+.meals-badges span {
+  display: inline-block;
+  background: #444;
+  color: #ddd;
+  border-radius: 3px;
+  padding: 0.15rem 0.5rem;
+  font-size: 0.8rem;
+  margin-right: 0.4rem;
+}
+.meals-badges span.on { background: #2e7d32; color: #fff; }
+
+.inquiry-form input, .inquiry-form select {
+  width: 100%;
+  padding: 0.55rem;
+  border-radius: 4px;
+  border: 1px solid #555;
+  background: #1f1f1f;
+  color: #fff;
+  margin-bottom: 0.85rem;
+  font-size: 0.9rem;
+}
+.inquiry-form label { display: block; font-size: 0.85rem; margin-bottom: 0.3rem; color: #ccc; }
+.inquiry-form button {
+  background: #1c3f95;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  padding: 0.6rem 1.4rem;
+  font-size: 0.95rem;
+  cursor: pointer;
+}
+.site-flash {
+  padding: 0.75rem 1rem;
+  border-radius: 4px;
+  margin-bottom: 1.25rem;
+  font-size: 0.9rem;
+}
+.site-flash.error { background: #4a1d1d; color: #ffb4b4; }
+.site-flash.success { background: #1d3a1d; color: #b6f2b6; }
+.empty-note { color: #999; font-style: italic; }
+
+.site-footer {
+  text-align: center;
+  padding: 1.5rem 1.25rem;
+  margin-top: 2rem;
+  background: #1a1a1a;
+  color: #999;
+  font-size: 0.8rem;
+}
+.site-footer p { margin: 0.25rem 0; }
+.site-footer-credit { color: #777; }

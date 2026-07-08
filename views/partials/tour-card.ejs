@@ -1,0 +1,52 @@
+<%
+  var subtitleMatch = tour.title ? tour.title.match(/^(.*?)(\(.*\))\s*$/) : null;
+%>
+<div class="tour-card">
+  <div class="tour-card-image">
+    <% if (tour.cover_image_url) { %>
+      <img src="<%= tour.cover_image_url %>" alt="<%= tour.title %>">
+    <% } %>
+  </div>
+  <div class="tour-card-body">
+    <div class="tour-title">
+      <span class="title-main">
+        <% if (subtitleMatch) { %>
+          <%= subtitleMatch[1] %><span class="subtitle-red"><%= subtitleMatch[2] %></span>
+        <% } else { %>
+          <%= tour.title %>
+        <% } %>
+      </span>
+    </div>
+
+    <% if (tour.pdf_url) { %>
+      <div class="tour-field">
+        <span class="detail-label">旅程详情:</span>
+        <a class="tour-detail-link" href="<%= tour.pdf_url %>" target="_blank">Click 点击我一下</a>
+      </div>
+    <% } %>
+
+    <% if (tour.departure_dates) { %>
+      <div class="tour-field"><span class="field-label">日期 Date：</span> <%= tour.departure_dates %></div>
+    <% } %>
+
+    <div class="tour-field"><span class="field-label">团费 Price：</span> from RM <%= tour.price %></div>
+
+    <% if (tour.whatsapp_links && tour.whatsapp_links.length) { %>
+      <div class="tour-field">
+        <span class="field-label">WhatsApp 联系：</span>
+        <% tour.whatsapp_links.forEach(function(w) { %>
+          <div class="whatsapp-line">
+            <span class="whatsapp-number"><%= w.number %></span>
+            <a class="whatsapp-link" href="<%= w.link %>" target="_blank">
+              <span class="whatsapp-icon">&#9655;</span><%= w.displayUrl %>
+            </a>
+          </div>
+        <% }); %>
+      </div>
+    <% } %>
+
+    <% if (false) { // Full Itinerary button temporarily hidden %>
+      <a class="view-detail-btn" href="/tours/<%= tour.id %>">Full Itinerary / 完整行程</a>
+    <% } %>
+  </div>
+</div>

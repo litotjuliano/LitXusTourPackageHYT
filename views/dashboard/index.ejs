@@ -1,0 +1,17 @@
+<%- include('../partials/header', { title: 'Dashboard', currentAdmin }) %>
+
+<h1>Dashboard</h1>
+<div class="form-grid">
+  <div class="card">
+    <h2 style="margin-top:0;">Total Tours</h2>
+    <p style="font-size:2rem;margin:0;"><%= counts.totalTours %></p>
+  </div>
+  <% if (false) { // New Leads card temporarily hidden %>
+    <div class="card">
+      <h2 style="margin-top:0;">New Leads (7 days)</h2>
+      <p style="font-size:2rem;margin:0;"><%= counts.newLeadsThisWeek %></p>
+    </div>
+  <% } %>
+</div>
+
+<%- include('../partials/footer') %>

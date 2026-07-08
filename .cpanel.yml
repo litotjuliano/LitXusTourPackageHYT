@@ -1,0 +1,6 @@
+---
+deployment:
+  tasks:
+    - export DEPLOYPATH=/home/USERNAME/hyt_app/
+    - /bin/cp -R * $DEPLOYPATH
+    - /usr/local/bin/npm --prefix $DEPLOYPATH install --production

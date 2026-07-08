@@ -1,0 +1,35 @@
+<%- include('../partials/header', { title: 'Leads', currentAdmin }) %>
+
+<h1>Leads</h1>
+
+<table>
+  <thead>
+    <tr><th>Date</th><th>Customer</th><th>WhatsApp</th><th>Tour</th><th>Pax</th><th>Source</th><th>Status</th><th></th></tr>
+  </thead>
+  <tbody>
+  <% leads.forEach(function(lead) { %>
+    <tr>
+      <td><%= new Date(lead.created_at).toLocaleDateString() %></td>
+      <td><%= lead.customer_name %></td>
+      <td><%= lead.whatsapp_number %></td>
+      <td><%= lead.Tour ? lead.Tour.title : '—' %></td>
+      <td><%= lead.pax_count || '—' %></td>
+      <td><%= lead.lead_source %></td>
+      <td>
+        <form method="POST" action="/admin/leads/<%= lead.id %>/status" style="display:inline;">
+          <select name="status" onchange="this.form.submit()">
+            <% ['New', 'Contacted', 'Deposited', 'Closed'].forEach(function(s) { %>
+              <option value="<%= s %>" <%= lead.status === s ? 'selected' : '' %>><%= s %></option>
+            <% }); %>
+          </select>
+        </form>
+      </td>
+      <td>
+        <a href="<%= lead.whatsapp_link %>" target="_blank" class="btn btn-whatsapp">Chat on WhatsApp</a>
+      </td>
+    </tr>
+  <% }); %>
+  </tbody>
+</table>
+
+<%- include('../partials/footer') %>
