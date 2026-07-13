@@ -3,7 +3,7 @@ const asyncHandler = require('../../utils/asyncHandler');
 
 // GET /api/v1/public/tours
 exports.list = asyncHandler(async (req, res) => {
-  const tours = await Tour.findAll({ order: [['created_at', 'DESC']] });
+  const tours = await Tour.findAll({ order: [['display_order', 'ASC']] });
   res.json({ tours });
 });
 

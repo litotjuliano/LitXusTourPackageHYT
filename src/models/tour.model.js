@@ -17,6 +17,7 @@ module.exports = (sequelize, DataTypes) =>
       pdf_public_id: { type: DataTypes.STRING(255), allowNull: true },
       cover_image_url: { type: DataTypes.STRING(500), allowNull: true },
       cover_image_public_id: { type: DataTypes.STRING(255), allowNull: true },
+      display_order: { type: DataTypes.INTEGER, allowNull: false, defaultValue: 0 },
     },
     {
       tableName: 'tours',

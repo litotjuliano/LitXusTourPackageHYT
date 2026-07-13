@@ -52,7 +52,7 @@ exports.showDashboard = asyncHandler(async (req, res) => {
 // ---- Tours ----
 
 exports.showTourList = asyncHandler(async (req, res) => {
-  const tours = await Tour.findAll({ order: [['created_at', 'DESC']] });
+  const tours = await Tour.findAll({ order: [['display_order', 'ASC']] });
   res.render('tours/list', { title: 'Tours', tours });
 });
 
@@ -78,6 +78,7 @@ exports.submitTourCreate = asyncHandler(async (req, res) => {
   const pdfFile = req.files && req.files.pdfFlyer ? req.files.pdfFlyer[0] : null;
 
   const tour = await sequelize.transaction(async (t) => {
+    const maxOrder = (await Tour.max('display_order', { transaction: t })) || 0;
     const created = await Tour.create(
       {
         title: req.body.title,
@@ -85,6 +86,7 @@ exports.submitTourCreate = asyncHandler(async (req, res) => {
         departure_dates: req.body.departure_dates || null,
         whatsapp_1: req.body.whatsapp_1 || null,
         whatsapp_2: req.body.whatsapp_2 || null,
+        display_order: maxOrder + 1,
       },
       { transaction: t }
     );

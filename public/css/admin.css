@@ -137,3 +137,28 @@ textarea { min-height: 70px; }
 }
 .admin-footer p { margin: 0.2rem 0; }
 .admin-footer-credit { color: #9ca3af; }
+
+.reorder-cell {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  white-space: nowrap;
+}
+.reorder-arrows {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+}
+.btn-icon-sm {
+  width: 1.4rem;
+  height: 1.4rem;
+}
+.drag-handle {
+  cursor: grab;
+}
+.drag-handle:active {
+  cursor: grabbing;
+}
+tr.dragging {
+  opacity: 0.4;
+}

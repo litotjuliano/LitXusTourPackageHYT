@@ -22,6 +22,7 @@ const tourUploadFields = upload.fields([
 
 router.get('/tours', toursController.list);
 router.post('/tours', tourUploadFields, toursController.create);
+router.put('/tours/reorder', toursController.reorder); // must precede PUT /tours/:id
 router.get('/tours/:id', toursController.getOne);
 router.put('/tours/:id', tourUploadFields, toursController.update);
 router.delete('/tours/:id', toursController.remove);

@@ -15,7 +15,7 @@ function decorateWhatsAppLinks(tour) {
 
 // GET /
 exports.showHome = asyncHandler(async (req, res) => {
-  const tours = await Tour.findAll({ order: [['created_at', 'DESC']] });
+  const tours = await Tour.findAll({ order: [['display_order', 'ASC']] });
   res.render('public/home', { title: 'Home', tours: tours.map(decorateWhatsAppLinks) });
 });
 
